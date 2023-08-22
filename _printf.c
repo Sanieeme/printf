@@ -1,58 +1,50 @@
 #include "main.h"
+#include <stdio.h>
+#include <string.h>
 
 /**
- * _printf -function that produces output according to format 
+ * _printf - function that produces output according to format
  * @...: parameter
  * @format: constant string
- * Return: number of characters printed
+ * Return: number of characters printer
  */
 int _printf(const char *format, ...)
 {
-    va_list print;
-    int i, char_count = 0;
+	va_list print;
+	int chara_count = 0;
+	char *str;
+	int len = 0;
 
-    va_start(print, format);
+	va_start(print, format);
+	while (*format)
+	{
+		if (*format != '%')
+		{
+			putchar(*format);
+			chara_count++;
+		}
+		else if (*format == '%')
+		{
+			format++;
+		}
+		if (*format == 'c')
+		{
+			char chara = va_arg(print, int);
 
-    for (i = 0; format[i] != '\0'; i++)
-    {
-        if (format[i] == '%')
-        {
-            i++;
+			putchar(chara);
+			chara_count++;
+		}
+		if (*format == 's')
+		{
+			str = va_arg(print, char*);
+			while (str[len] != '\0')
+				len++;
 
-            if (format[i] == 'd' || format[i] == 'i')
-            {
-                int num = va_arg(print, int);
-                char_count += printf("%d", num);
-            }
-            else if (format[i] == 'c')
-            {
-                int chara = va_arg(print, int);
-                putchar(chara);
-                char_count++;
-            }
-            else if (format[i] == 's')
-            {
-                char *str = va_arg(print, char*);
-                while (*str != '\0')
-                {
-                    putchar(*str);
-                    char_count++;
-                    str++;
-                }
-            }
-            else if (format[i] == '%')
-            {
-                putchar('%');
-                char_count++;
-            }
-        }
-        else
-        {
-            putchar(format[i]);
-            char_count++;
-        }
-    }
-
-    va_end(print);
-    return char_count;
+			putchar(str[len]);
+			chara_count += len;
+		}
+		format++;
+	}
+	va_end(print);
+	return (chara_count);
 }
