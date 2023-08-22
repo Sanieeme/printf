@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-=======
 #include "main.h"
-#include <stdio.h>
-#include <string.h>
-
 /**
  * _printf - function that produces output according to format
  * @...: parameter
- * @format: constant string
+ * @format: string
  * Return: number of characters printer
  */
 int _printf(const char *format, ...)
@@ -23,7 +18,7 @@ int _printf(const char *format, ...)
 			putchar(*format);
 			chara_count++;
 		}
-		else if (*format == '%')
+		if (*format == '%')
 		{
 			format++;
 			if (*format == 'c')
@@ -36,6 +31,7 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				char *str = va_arg(print, char*);
+
 				while (*str != '\0')
 				{
 					putchar(*str);
@@ -54,4 +50,3 @@ int _printf(const char *format, ...)
 	va_end(print);
 	return (chara_count);
 }
->>>>>>> 300f8e8094f4619878eb6f95921e36e7e9692e66
