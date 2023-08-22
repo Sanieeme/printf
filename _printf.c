@@ -24,13 +24,23 @@ int _printf(const char *format, ...)
 		else if (*format == '%')
 		{
 			format++;
-		}
-		if (*format == 'c')
-		{
-			char chara = va_arg(print, int);
+			if (*format == 'c')
+			{
+				char chara = va_arg(print, int);
 
-			putchar(chara);
-			chara_count++;
+				putchar(chara);
+				chara_count++;
+			}
+			if (*format == 's')
+			{
+				char *str = va_arg(print, char*);
+				int leng = 0;
+
+				while (str[leng] != '\0')
+					leng++;
+				putchar(str[leng]);
+				chara_count += leng;
+			}
 		}
 		format++;
 	}
