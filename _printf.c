@@ -12,8 +12,6 @@ int _printf(const char *format, ...)
 {
 	va_list print;
 	int chara_count = 0;
-	char *str;
-	int len = 0;
 
 	va_start(print, format);
 	while (*format)
@@ -33,15 +31,6 @@ int _printf(const char *format, ...)
 
 			putchar(chara);
 			chara_count++;
-		}
-		if (*format == 's')
-		{
-			str = va_arg(print, char*);
-			while (str[len] != '\0')
-				len++;
-
-			putchar(str[len]);
-			chara_count += len;
 		}
 		format++;
 	}
