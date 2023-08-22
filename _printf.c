@@ -31,15 +31,20 @@ int _printf(const char *format, ...)
 				putchar(chara);
 				chara_count++;
 			}
-			if (*format == 's')
+			else if (*format == 's')
 			{
 				char *str = va_arg(print, char*);
-				int leng = 0;
-
-				while (str[leng] != '\0')
-					leng++;
-				putchar(str[leng]);
-				chara_count += leng;
+				while (*str != '\0')
+				{
+					putchar(*str);
+					chara_count++;
+					str++;
+				}
+			}
+			else if (*format == '%')
+			{
+				putchar('%');
+				chara_count++;
 			}
 		}
 		format++;
