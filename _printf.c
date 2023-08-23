@@ -26,6 +26,7 @@ int _printf(const char *format, ...)
 				char chara = va_arg(print, int);
 
 				putchar(chara);
+				chara_count++;
 			}
 			else if (*format == 's')
 			{
@@ -34,6 +35,7 @@ int _printf(const char *format, ...)
 				while (*str != '\0')
 				{
 					putchar(*str);
+					chara_count++;
 					str++;
 				}
 			}
