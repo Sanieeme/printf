@@ -5,7 +5,7 @@ The aim of this project is to create a fuction that will mimick the printf funct
 Weight: 5 
 Project started Aug 18, 2023 8:00 AM, must end by Aug 23, 2023 8:00 AM
 
-General Requirements and conditions:
+General Requirements and condition and regulations:
 Allowed editors: vi, vim, emacs
 All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 All your files should end with a new line
