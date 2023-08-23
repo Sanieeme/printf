@@ -11,14 +11,16 @@ int _printf(const char *format, ...)
 	int chara_count = 0;
 
 	va_start(print, format);
-	while (*format)
+	if (format == NULL)
+		return (-1);
+	while (*format != '\0')
 	{
 		if (*format != '%')
 		{
 			putchar(*format);
 			chara_count++;
 		}
-		if (*format == '%')
+		else
 		{
 			format++;
 			if (*format == 'c')
